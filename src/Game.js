@@ -1,16 +1,20 @@
+
 import React, { Component } from "react";
 import Avocado from "./Avocado";
 import "./App.css";
-// import { NavLink } from "react-router-dom";
 import Result from "./Result";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import Guacamole from "./Guacamole";
 class Game extends Component {
   state = {
-    circles: new Array(6).fill({}).map(() => {
-      return { isAvocado: false };
-    }),
+    circles: [],
     score: 0,
-    remainingTime: 10
+    remainingTime: 120,
+    avocadoIndex: 0
   };
+  componentDidMount() {
+    this.startGame();
+  }
   startGame = () => {
     this.startCountDown(this.state.remainingTime);
     setInterval(() => {
@@ -19,11 +23,27 @@ class Game extends Component {
       });
     }, 1000);
   };
+  renderTime = value => {
+    if (value === 0) {
+      return <div className="timer">Too lale...</div>;
+    }
+    let seconds=value%60;
+  
+    return (
+      <div className="timer">
+        <div className="value">{Math.floor(value / 60)}:{seconds}</div>
+
+      </div>
+    );
+  };
   getCircles = () => {
-    const circlesArray = new Array(6).fill({}).map(() => {
-      return { isAvocado: false };
+    const circlesArray = new Array(9).fill({}).map(() => {
+      return { isAvocado: false,isGuacamole:false};
     });
-    const randomNumber = Math.floor(Math.random() * Math.floor(6));
+    const randomNumber = Math.floor(Math.random() * Math.floor(9));
+    this.setState({
+      avocadoIndex:randomNumber
+    })
     circlesArray[randomNumber].isAvocado = true;
     return circlesArray;
   };
@@ -34,20 +54,17 @@ class Game extends Component {
       this.setState({ remainingTime: counter });
       if (counter <= 0) {
         clearInterval(interval);
-        // alert("game Over! your Score is " + this.state.score);
-        // return (
-        //   <NavLink to="/result">
-        //     <button>Result</button>
-        //   </NavLink>
-        // );
       }
     }, 1000);
   };
   avocadoSmashed = () => {
+
     this.setState({
       circles: this.getCircles(),
       score: this.state.score + 5
+
     });
+
   };
   render() {
     const circles = this.state.circles.map((circle, index) => {
@@ -62,18 +79,19 @@ class Game extends Component {
     return (
       <div className="container header">
         {this.state.remainingTime === 0 && <Result score={this.state.score} />}
-        {this.state.remainingTime > 0 && (
-          <div class="row align-items-center">
-            <div class="col-sm-6">
-              <h2>Score: {this.state.score}</h2>
-              <p>Remaining Time: {this.state.remainingTime / 100} min</p>
-              <button
-                type="button"
-                className="btn btn-success"
-                onClick={this.startGame}
-              >
-                <h3>Start</h3>
-              </button>
+        
+        {this.state.circles.length >0 && this.state.remainingTime > 0 && (
+          <div className="row align-items-center">
+            <div className="col-sm-6">
+              <h2 className="display-4 text-center">Score: {this.state.score}</h2>
+              <CountdownCircleTimer
+        isPlaying
+        durationSeconds={120}
+        colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
+        renderTime={this.renderTime}
+        onComplete={() => [true, 1000]}
+      />
+     
               <br></br>
             </div>
             <div class="col-sm-6">{circles}</div>

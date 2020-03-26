@@ -1,14 +1,13 @@
 import React from "react";
 import "./Circle.css";
-import avocado from "./images/avocado.png";
 import guacamole from "./images/guacamole.png"
-const Avocado = props => {
-  if (props.isVisible === true) {
+const Guacamole = props => {
+  if (props.clicked) {
     return (
       <div
         className="Circle"
         onClick={props.clicked}
-        style={{ backgroundImage:`url(${avocado})`}}></div>
+        style={{ backgroundImage:`url(${guacamole})`}}></div>
     );
   } 
      else {
@@ -16,4 +15,4 @@ const Avocado = props => {
   }
 
 };
-export default Avocado;
+export default Guacamole;
