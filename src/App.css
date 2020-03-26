@@ -31,3 +31,6 @@
     background-image: url("./images/bg.jpg");
     background-repeat: repeat;
   }
+  .timer{
+    font-size: 1.5em;
+  }

@@ -25,13 +25,13 @@ class Game extends Component {
   };
   renderTime = value => {
     if (value === 0) {
-      return <div className="timer">Too lale...</div>;
+      return <div className="timer">Too late...</div>;
     }
     let seconds=value%60;
   
     return (
-      <div className="timer">
-        <div className="value">{Math.floor(value / 60)}:{seconds}</div>
+      <div>
+        <div className="timer">{Math.floor(value / 60)}:{seconds}</div>
 
       </div>
     );
