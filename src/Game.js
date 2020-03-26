@@ -84,13 +84,14 @@ class Game extends Component {
           <div className="row align-items-center">
             <div className="col-sm-6">
               <h2 className="display-4 text-center">Score: {this.state.score}</h2>
+              <br></br>
               <CountdownCircleTimer
-        isPlaying
-        durationSeconds={120}
-        colors={[["#004777", 0.33], ["#F7B801", 0.33], ["#A30000"]]}
-        renderTime={this.renderTime}
-        onComplete={() => [true, 1000]}
-      />
+                isPlaying
+                durationSeconds={120}
+                colors={[["#edf974", 0.95],["#A30000",0.05]]}
+                renderTime={this.renderTime}
+                onComplete={() => [true, 1000]}
+              />
      
               <br></br>
             </div>
