@@ -21,3 +21,13 @@
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;}
+
+  .jumbotron {
+    background-color: #181B24;
+    text-align: center;
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+  .background {
+    background-image: url("./images/bg.jpg");
+    background-repeat: repeat;
+  }

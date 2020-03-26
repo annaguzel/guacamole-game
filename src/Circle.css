@@ -1,0 +1,13 @@
+.Circle {
+    width: 150px;
+    height: 150px;
+    background-image: url("./images/cover.jpg");
+    border-radius: 50%;
+    border: 10px solid #edf974;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
