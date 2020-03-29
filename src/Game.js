@@ -4,13 +4,11 @@ import Avocado from "./Avocado";
 import "./App.css";
 import Result from "./Result";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import Guacamole from "./Guacamole";
 class Game extends Component {
   state = {
     circles: [],
     score: 0,
-    remainingTime: 120,
-    avocadoIndex: 0
+    remainingTime: 120
   };
   componentDidMount() {
     this.startGame();
@@ -38,12 +36,9 @@ class Game extends Component {
   };
   getCircles = () => {
     const circlesArray = new Array(9).fill({}).map(() => {
-      return { isAvocado: false,isGuacamole:false};
+      return { isAvocado: false};
     });
     const randomNumber = Math.floor(Math.random() * Math.floor(9));
-    this.setState({
-      avocadoIndex:randomNumber
-    })
     circlesArray[randomNumber].isAvocado = true;
     return circlesArray;
   };

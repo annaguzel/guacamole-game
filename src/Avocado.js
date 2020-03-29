@@ -1,7 +1,6 @@
 import React from "react";
 import "./Circle.css";
 import avocado from "./images/avocado.png";
-import guacamole from "./images/guacamole.png"
 const Avocado = props => {
   if (props.isVisible === true) {
     return (
